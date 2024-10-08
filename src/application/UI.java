@@ -13,6 +13,8 @@ public class UI {
             System.out.println();
         }
         System.out.println("  a b c d e f g h");
+        char k = '0';
+
     }
 
     private static void printPiece(ChessPiece piece) {
