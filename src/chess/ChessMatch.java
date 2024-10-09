@@ -16,29 +16,29 @@ public class ChessMatch {
     }
 
     public ChessPiece[][] getpieces() {
-        ChessPiece[][] mat = new ChessPiece[8][8];
+        ChessPiece[][] mat = new ChessPiece[8][8];//aqui eu opero com a matriz de pieces, no geral, position é mais para a interação com o jogador
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                mat[i][j] = (ChessPiece) board.piece(i, j);
+                mat[i][j] = (ChessPiece) board.piece(i, j);//retorna o tabuleiro inteiro, o estado atual dele
             }
         }
         return mat;
     }
 
-    public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+    public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {//obvio
         Position source = sourcePosition.toPosition();
         Position target = targetPosition.toPosition();
         validateSourcePosition(source);
-        Piece capturedPiece = makeMove(source, target);
-        return (ChessPiece)capturedPiece;
+        Piece capturedPiece = makeMove(source, target);//move a peça apos a checagem
+        return (ChessPiece)capturedPiece;//== null
     }
 
     private Piece makeMove(Position source, Position target) {
-        Piece p = board.removePiece(source);
-        Piece capturedPiece = board.removePiece(target);
-        board.placePiece(p, target);
+        Piece p = board.removePiece(source);// == null
+        Piece capturedPiece = board.removePiece(target);// == null, e abre espaço pra fazer o da prox linha
+        board.placePiece(p, target);//eu to removendo a peça da posição inicial e movendo
 
-        return capturedPiece;
+        return capturedPiece;// == null
     }
 
     private void validateSourcePosition(Position sourcePosition) {

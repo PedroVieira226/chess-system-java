@@ -31,6 +31,7 @@ public class UI {
 
     public static ChessPosition readChessPosition(Scanner sc){
 
+
         try {
             String str = sc.nextLine();
             char colum = str.charAt(0);

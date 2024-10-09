@@ -32,7 +32,7 @@ public class Board {
         if(!PositionExists(row, column)){
             throw new BoardException("Postion not on the board");
         }
-        return pieces[row][column];
+        return pieces[row][column];//matriz pieces como é operada
     }
 
 
@@ -40,15 +40,15 @@ public class Board {
         if(!PositionExists(position)){
             throw new BoardException("Postion not on the board");
         }
-        return pieces[position.getRow()][position.getColumn()];
+        return pieces[position.getRow()][position.getColumn()];// matriz do tabuleiro digamos assim, b1 etc
     }
 
     public void placePiece(Piece piece, Position position) {
         if(thereIsAPiece(position)){
             throw new BoardException("There is already a piece on position" + position);
         }
-        pieces[position.getRow()][position.getColumn()] = piece;
-        piece.position = position;
+        pieces[position.getRow()][position.getColumn()] = piece;//peça null antes na posição assume "piece"
+        piece.position = position;//atualiza a posição da piece
     }
 
     private boolean PositionExists(int row, int column) {

@@ -27,6 +27,8 @@ public class Program {
         }
 
     }
+    /*Position ---> char + int
+    * Piece ---> Piece[][]*/
 
 
 
