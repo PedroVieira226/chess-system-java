@@ -13,7 +13,7 @@ public abstract class Piece {
         return board;
     }
 
-    public abstract boolean[][] possibleMoves();//abstrata pois piece é muito generic pra ter uma iplementação, jogar @Override na classe especidifca
+    public abstract boolean[][] possibleMoves();//abstrata pois piece é muito generico pra ter uma iplementação, jogar @Override na classe especifica
 
     public boolean possibleMove(Position position) {
         return possibleMoves()[position.getRow()][position.getColumn()];//retorna se a posição especifica é possivel

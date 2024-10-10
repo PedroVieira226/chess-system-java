@@ -19,14 +19,15 @@ public class Rook extends ChessPiece {
 
     @Override
     public boolean[][] possibleMoves() {
-        boolean[][] mat = new boolean[8][8];
+        boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
 
         Position p = new Position(0, 0);
+
         // above
         p.setValue(position.getRow() - 1, position.getColumn());
         while(getBoard().PositionExists(p) && !getBoard().thereIsAPiece(p)){
             mat[p.getRow()][p.getColumn()] = true;
-            p.setRow(p.getRow() - 1);
+            p.setRow(p.getRow() - 1);//supondo que meu rook esta na linha 7, vai verificando todas as linhas a partir da linha 6
         }
 
         if(getBoard().PositionExists(p) && isThereOpponentPiece(p)){
