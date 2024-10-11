@@ -1,21 +1,16 @@
 package chess.pieces;
 
 import boardgames.Board;
-import boardgames.Piece;
 import boardgames.Position;
 import chess.ChessPiece;
 import chess.Color;
 
-public class Rook extends ChessPiece {
+public class Queen extends ChessPiece {
 
-    public Rook(Board board, Color color) {
+    public Queen(Board board, Color color) {
         super(board, color);
     }
 
-    @Override
-    public String toString(){
-        return "R";
-    }
 
     @Override
     public boolean[][] possibleMoves() {
@@ -27,7 +22,7 @@ public class Rook extends ChessPiece {
         p.setValue(position.getRow() - 1, position.getColumn());
         while(getBoard().PositionExists(p) && !getBoard().thereIsAPiece(p)){
             mat[p.getRow()][p.getColumn()] = true;
-            p.setRow(p.getRow() - 1);//supondo que meu rook esta na linha 7, vai verificando todas as linhas a partir da linha 6
+            p.setRow(p.getRow() - 1);
         }
 
         if(getBoard().PositionExists(p) && isThereOpponentPiece(p)){
@@ -67,10 +62,55 @@ public class Rook extends ChessPiece {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
+        p.setValue(position.getRow() - 1, position.getColumn() - 1);
+        while(getBoard().PositionExists(p) && !getBoard().thereIsAPiece(p)) {
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setValue(p.getRow() - 1, p.getColumn() - 1);
+        }
 
+        if(getBoard().PositionExists(p) && isThereOpponentPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+
+        p.setValue(position.getRow() - 1, position.getColumn() + 1);
+        while(getBoard().PositionExists(p) && !getBoard().thereIsAPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setValue(p.getRow() - 1, p.getColumn() + 1);
+        }
+
+        if(getBoard().PositionExists(p) && isThereOpponentPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+
+        p.setValue(position.getRow() + 1, position.getColumn() + 1);
+        while(getBoard().PositionExists(p) && !getBoard().thereIsAPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setValue(p.getRow() + 1, p.getColumn() + 1);
+        }
+
+        if(getBoard().PositionExists(p) && isThereOpponentPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+        }
+
+
+        p.setValue(position.getRow() + 1, position.getColumn() - 1);
+        while(getBoard().PositionExists(p) && !getBoard().thereIsAPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+            p.setValue(p.getRow() + 1, p.getColumn() - 1);
+        }
+
+        if(getBoard().PositionExists(p) && isThereOpponentPiece(p)){
+            mat[p.getRow()][p.getColumn()] = true;
+        }
 
 
         return mat;
 
+    }
+
+    public String toString(){
+        return "Q";
     }
 }
