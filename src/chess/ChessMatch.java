@@ -83,7 +83,8 @@ public class ChessMatch {
     }
 
     private Piece makeMove(Position source, Position target) {
-        Piece p = board.removePiece(source);// == null
+        ChessPiece p = (ChessPiece)board.removePiece(source);// == null
+        p.increaseMoveCount();
         Piece capturedPiece = board.removePiece(target);// == null, e abre espaço pra fazer o da prox linha
         board.placePiece(p, target);//eu to removendo a peça da posição inicial e movendo
 
@@ -97,8 +98,9 @@ public class ChessMatch {
     }
 
     private void undoMove(Position source, Position target, Piece capturedPiece) {
-        Piece p = board.removePiece(target);
+        ChessPiece p = (ChessPiece)board.removePiece(target);
         board.placePiece(p, source);
+        p.decreaseMoveCount();
 
         if(capturedPiece != null){
             board.placePiece(capturedPiece, target);
